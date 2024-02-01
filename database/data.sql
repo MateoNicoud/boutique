@@ -14,7 +14,7 @@ INSERT INTO tva (id, tva) VALUES
 INSERT INTO products (id, title, description, priceTTC, weight, tva, stock, categories_id, tva_id, price_HTT) VALUES
                                                                                                                  (1, 'Laptop', 'Powerful laptop for work and gaming', 1200.00, 2, 1, 50, 1, 1, 1000.00),
                                                                                                                  (2, 'T-Shirt', 'Comfortable cotton T-shirt', 20.00, 0.2, 1, 100, 2, 1, 16.67),
-                                                                                                                 (3, 'Sofa', 'Large comfortable sofa for your living room', 800.00, 30, 1, 10, 3, 1, 666.67),
+                                                                                                                 (3, 'Sofa', 'Large comfortable sofa for your living room', 800.00, 30, 1, 10, 3, 1, 666.67);
 -- Add more products with short descriptions as per your requirement
 
 -- Insert data into clients table
@@ -33,5 +33,5 @@ INSERT INTO `order` (id, number, order_date, ship_date, clients_id) VALUES
 INSERT INTO products_has_order (products_id, order_id, amount) VALUES
     (1, 1, 2),
     (2, 1, 3),
-    (3, 2, 1),
+    (3, 2, 1);
 -- Add more product-order relationships as needed
