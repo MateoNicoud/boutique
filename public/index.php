@@ -1,2 +1,3 @@
 <?php
-echo "Bienvenue sur la boutique";
+include "../config/database.php";
+include "../route/web.php";
