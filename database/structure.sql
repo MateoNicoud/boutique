@@ -19,7 +19,7 @@ DROP TABLE IF EXISTS `categories` ;
 CREATE TABLE IF NOT EXISTS `categories` (
                                             `id` INT NOT NULL,
                                             `title` VARCHAR(45) NULL,
-    PRIMARY KEY (`id`))
+                                            PRIMARY KEY (`id`))
     ENGINE = InnoDB;
 
 
@@ -43,27 +43,27 @@ DROP TABLE IF EXISTS `products` ;
 CREATE TABLE IF NOT EXISTS `products` (
                                           `id` INT NOT NULL,
                                           `title` VARCHAR(45) NULL,
-    `description` LONGTEXT NULL,
-    `priceTTC` FLOAT NULL,
-    `weight` INT NULL,
-    `tva` INT NULL,
-    `stock` INT NULL,
-    `categories_id` INT NOT NULL,
-    `tva_id` INT NOT NULL,
-    `price_HTT` FLOAT NULL,
-    PRIMARY KEY (`id`, `tva_id`),
-    INDEX `fk_products_categories_idx` (`categories_id` ASC) VISIBLE,
-    INDEX `fk_products_tva1_idx` (`tva_id` ASC) VISIBLE,
-    CONSTRAINT `fk_products_categories`
-    FOREIGN KEY (`categories_id`)
-    REFERENCES `categories` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-    CONSTRAINT `fk_products_tva1`
-    FOREIGN KEY (`tva_id`)
-    REFERENCES `tva` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+                                          `description` LONGTEXT NULL,
+                                          `priceTTC` FLOAT NULL,
+                                          `weight` INT NULL,
+                                          `tva` INT NULL,
+                                          `stock` INT NULL,
+                                          `categories_id` INT NOT NULL,
+                                          `tva_id` INT NOT NULL,
+                                          `price_HTT` FLOAT NULL,
+                                          PRIMARY KEY (`id`, `tva_id`),
+                                          INDEX `fk_products_categories_idx` (`categories_id` ASC) VISIBLE,
+                                          INDEX `fk_products_tva1_idx` (`tva_id` ASC) VISIBLE,
+                                          CONSTRAINT `fk_products_categories`
+                                              FOREIGN KEY (`categories_id`)
+                                                  REFERENCES `categories` (`id`)
+                                                  ON DELETE NO ACTION
+                                                  ON UPDATE NO ACTION,
+                                          CONSTRAINT `fk_products_tva1`
+                                              FOREIGN KEY (`tva_id`)
+                                                  REFERENCES `tva` (`id`)
+                                                  ON DELETE NO ACTION
+                                                  ON UPDATE NO ACTION)
     ENGINE = InnoDB;
 
 
@@ -75,10 +75,10 @@ DROP TABLE IF EXISTS `clients` ;
 CREATE TABLE IF NOT EXISTS `clients` (
                                          `id` INT NOT NULL,
                                          `first_name` VARCHAR(45) NULL,
-    `last_name` VARCHAR(45) NULL,
-    `email` VARCHAR(45) NULL,
-    `password` VARCHAR(45) NULL,
-    PRIMARY KEY (`id`))
+                                         `last_name` VARCHAR(45) NULL,
+                                         `email` VARCHAR(45) NULL,
+                                         `password` VARCHAR(45) NULL,
+                                         PRIMARY KEY (`id`))
     ENGINE = InnoDB;
 
 
@@ -94,12 +94,12 @@ CREATE TABLE IF NOT EXISTS `order` (
                                        `ship_date` DATE NULL,
                                        `clients_id` INT NOT NULL,
                                        PRIMARY KEY (`id`),
-    INDEX `fk_order_clients1_idx` (`clients_id` ASC) VISIBLE,
-    CONSTRAINT `fk_order_clients1`
-    FOREIGN KEY (`clients_id`)
-    REFERENCES `clients` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+                                       INDEX `fk_order_clients1_idx` (`clients_id` ASC) VISIBLE,
+                                       CONSTRAINT `fk_order_clients1`
+                                           FOREIGN KEY (`clients_id`)
+                                               REFERENCES `clients` (`id`)
+                                               ON DELETE NO ACTION
+                                               ON UPDATE NO ACTION)
     ENGINE = InnoDB;
 
 
@@ -113,18 +113,18 @@ CREATE TABLE IF NOT EXISTS `products_has_order` (
                                                     `order_id` INT NOT NULL,
                                                     `amount` INT NULL,
                                                     PRIMARY KEY (`order_id`, `products_id`),
-    INDEX `fk_products_has_order_order1_idx` (`order_id` ASC) VISIBLE,
-    INDEX `fk_products_has_order_products1_idx` (`products_id` ASC) VISIBLE,
-    CONSTRAINT `fk_products_has_order_products1`
-    FOREIGN KEY (`products_id`)
-    REFERENCES `products` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-    CONSTRAINT `fk_products_has_order_order1`
-    FOREIGN KEY (`order_id`)
-    REFERENCES `order` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+                                                    INDEX `fk_products_has_order_order1_idx` (`order_id` ASC) VISIBLE,
+                                                    INDEX `fk_products_has_order_products1_idx` (`products_id` ASC) VISIBLE,
+                                                    CONSTRAINT `fk_products_has_order_products1`
+                                                        FOREIGN KEY (`products_id`)
+                                                            REFERENCES `products` (`id`)
+                                                            ON DELETE NO ACTION
+                                                            ON UPDATE NO ACTION,
+                                                    CONSTRAINT `fk_products_has_order_order1`
+                                                        FOREIGN KEY (`order_id`)
+                                                            REFERENCES `order` (`id`)
+                                                            ON DELETE NO ACTION
+                                                            ON UPDATE NO ACTION)
     ENGINE = InnoDB;
 
 
