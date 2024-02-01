@@ -7,3 +7,10 @@ function getProduct($pdo,$getId){
     );
     return $statement->fetchAll();
 }
+function getAllProducts($pdo){
+    $statement = $pdo->query(
+        "SELECT *
+        FROM products"
+    );
+    return $statement->fetchAll();
+}
