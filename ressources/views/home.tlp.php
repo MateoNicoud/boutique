@@ -2,7 +2,10 @@
 echo "le HOME TEMPLATE se charcge \n";
 ?>
 
-<?php include '../ressources/views/layout/header.tlp.php' ?>
+<?php include '../ressources/views/layouts/head.tlp.php' ?>
+<?php include '../ressources/views/layouts/header.tlp.php' ?>
+
+<main>
 <?php if ($productAsked == false): ?>
     <div> pas de contenu à afficher</div>
 <?php else:
@@ -15,4 +18,6 @@ echo "le HOME TEMPLATE se charcge \n";
         <div> priceTTC: <?= $value['priceTTC']; ?></div>
     <?php endforeach; ?>
 <?php endif; ?>
-<?php include '../ressources/views/layout/footer.tlp.php' ?>
+</main>
+    <?php include '../ressources/views/layouts/footer.tlp.php' ?>
+

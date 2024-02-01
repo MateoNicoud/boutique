@@ -1,5 +1,5 @@
-<?php include '../ressources/views/layout/header.tlp.php' ?>
+<?php include '../ressources/views/layout/head.tlp.php' ?>
 
 Ma boutique
-
-menu
+<div>
+nom du produit :

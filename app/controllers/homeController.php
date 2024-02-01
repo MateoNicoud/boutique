@@ -1,12 +1,11 @@
-<pre>
+
 <?php
 echo "le homeController se charge \n";
  include'../app/persistences/cartProductsData.php';
 
- $productAsked=lastProductsProposed($mysqlClient,4);
-#print_r($postAsked);
+ $productAsked=proposeLastProducts($mysqlClient,4);
+
 include '../ressources/views/home.tlp.php';
 
 
  ?>
-</pre>

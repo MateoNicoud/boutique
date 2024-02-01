@@ -1,5 +1,5 @@
 <?php
-function lastProductsProposed(PDO $mysqlClient, $numberArticles)
+function proposeLastProducts(PDO $mysqlClient, $numberArticles)
 {
 
     $lastPosts = [];
@@ -8,4 +8,11 @@ function lastProductsProposed(PDO $mysqlClient, $numberArticles)
     $lastPosts->execute();
     $lastPosts = $lastPosts->fetchAll();
     return $lastPosts;
+}
+function oneProductRequired(PDO $mysqlClient, $idArticle )
+{
+    $mySqlQuery="SELECT * FROM products WHERE id= :id;";
+    $stm=$mysqlClient->prepare($mySqlQuery);
+    $stm->execute(["id"=>$idArticle]);
+    return$stm->fetchAll();
 }
