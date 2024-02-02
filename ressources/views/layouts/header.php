@@ -8,6 +8,10 @@
     <title>Boutique</title>
 </head>
 <body>
+<?php
 
+totalCart($pdo,1) ;
+echo "Prix du panier : ".$_SESSION["cart"]["price"]."€";
+?>
 <h1> Ma boutique</h1>
 <br>
