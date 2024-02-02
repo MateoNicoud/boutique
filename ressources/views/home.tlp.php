@@ -1,9 +1,3 @@
-<?php
-echo "le HOME TEMPLATE se charcge \n";
-?>
-
-<?php include '../ressources/views/layouts/head.tlp.php' ?>
-<?php include '../ressources/views/layouts/header.tlp.php' ?>
 
 <main>
     <?php if ($productAsked == false): ?>
@@ -25,5 +19,5 @@ echo "le HOME TEMPLATE se charcge \n";
         </div>
     <?php endif; ?>
 </main>
-<?php include '../ressources/views/layouts/footer.tlp.php' ?>
+
 
