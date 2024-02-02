@@ -3,9 +3,9 @@ require ('../ressources/views/layouts/header.tpl.php'); ?>
 
    <h1>Bienvenue sur ma boutique !</h1>
 
-<!--Affichage des produits récupérés depuis le contrôleur-->
+<!--Affichage d'un produit récupéré depuis le contrôleur-->
 
-    <?php foreach ($getProduct as $product): ?>
+    <?php foreach ($detailsProduct as $product): ?>
         <div>
             <h3><?= $product['title']; ?></h3>
             <p><?= $product['description']; ?></p>
@@ -15,7 +15,7 @@ require ('../ressources/views/layouts/header.tpl.php'); ?>
 
 <!--Ajouter au formulaire prix unitaire +  prix en fonction de la quantité + description-->
 <!--    Faire un fichier de traitement des données du formulaire-->
-    <form action="/index.php?action=cart" method="POST">
+    <form action="/?action=cart" method="POST">
         <p> Ajout de <?= $product['title']; ?> au panier  : </p>
 
         <label for="quantity"> Merci de choisir la quantité voulue </label>

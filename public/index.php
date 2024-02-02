@@ -2,18 +2,16 @@
 
 require ('../config/database.php');
 
+
 $controllers = [
-    'product' => 'productsController'
+    'product' => '../app/controllers/productsController.php',
+    'home' => '../app/controllers/homeController.php',
+    'cart' => '../app/controllers/cartController.php',
+    '404' => '../ressources/views/errors/404.php',
 ];
 
-$action = filter_input(INPUT_GET,'action',FILTER_SANITIZE_URL);
+$action = filter_input(INPUT_GET,'action',FILTER_SANITIZE_SPECIAL_CHARS);
 
-if (!isset($action));
-{
-    $action = 'product';
-}
-if(isset($controllers[$action])){
-    require("../app/controllers/" . $controllers[$action] . ".php");
-}else{
-    require( "../ressources/views/errors" . "404.php");
-}
+$action =  isset ($action) ? (array_key_exists($action, $controllers) ? $action : '404') : 'home';
+
+include $controllers [$action];
