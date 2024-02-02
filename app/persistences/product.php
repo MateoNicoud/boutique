@@ -15,3 +15,9 @@ FROM products
 ORDER by title ;");
     return $allProductsStmt->fetchAll (PDO::FETCH_ASSOC);
 }
+
+function productInCart ($pdo, $quantity)
+{
+    $amountStmt = $pdo-> query ("");
+    return $amountStmt->fetchAll (PDO::FETCH_ASSOC);
+}

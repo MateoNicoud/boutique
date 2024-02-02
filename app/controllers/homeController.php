@@ -1,4 +1,5 @@
 <?php
+session_start();
 echo 'homeController';
 // Utilisation de la BDD
 require_once ('../app/persistences/product.php');

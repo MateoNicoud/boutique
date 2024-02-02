@@ -38,3 +38,12 @@ tva[<u>tva</u>
 <b>id</b>
 tva]
 ```
+
+```mermaid
+flowchart TD
+A[Home page :  show all products ] -->|session_start - $_SESSION= NULL| B(details product)
+B --> C{add to cart? quantity=X}
+C -->|add to cart | D[update cart]
+C -->|no| B[details product]
+D --> |Total | E[Show total]
+```
