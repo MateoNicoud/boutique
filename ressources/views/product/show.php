@@ -5,27 +5,26 @@ require ('../ressources/views/layouts/header.tpl.php'); ?>
 
 <!--Affichage des produits récupérés depuis le contrôleur-->
 
-    <?php foreach ($showProduct as $product): ?>
+    <?php foreach ($getProduct as $product): ?>
         <div>
-            <h2><?= $product['title']; ?></h2>
+            <h3><?= $product['title']; ?></h3>
             <p><?= $product['description']; ?></p>
-            <p>Prix: <?= $product['priceTTC']; ?> €</p>
+            <p>Prix: <?= $product['priceTTC']; ?>€ TTC</p>
         </div>
     <?php endforeach; ?>
 
 <!--Ajouter au formulaire prix unitaire +  prix en fonction de la quantité + description-->
 <!--    Faire un fichier de traitement des données du formulaire-->
-    <form action="traitement.php" method="POST">
-        <p> Ajout d'un produit au panier </p>
-        <div>
-            <label for="title"> Nom </label>
-            <input type ="text" id="title" name="title"/> <br>
-        </div>
-        <div>
-            <label for="amount"> Quantité </label>
-            <textarea id="quantity" name="amount"></textarea>
-        </div>
+    <form action="/index.php?action=cart" method="POST">
+        <p> Ajout de <?= $product['title']; ?> au panier  : </p>
 
+        <label for="quantity"> Merci de choisir la quantité voulue </label>
+        <br>
+<!--Ajouter limite de quantité en fonction du stock -->
+        <div>
+            <input type="number" id="product" name="product" min="0" max="50">
+        </div>
+<!--Afficher total -->
         <div class="button">
             <button type="submit">Ajouter au panier</button>
         </div>
