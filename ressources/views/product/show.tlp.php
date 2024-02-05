@@ -1,7 +1,4 @@
-<?php //include '../ressources/views/layouts/head.tlp.php' ?>
-<?php //include '../ressources/views/layouts/header.tlp.php' ?>
-    <!--show.tlp-->
-<?php //if(isset($_POST)){print_r($_POST);}?>
+
     <div class="d-flex p-2 justify-content-center" style="background-color: brown">
         nom du produit :<?= $productAsked['title']; ?>
     </div>

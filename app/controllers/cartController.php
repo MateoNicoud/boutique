@@ -8,4 +8,4 @@ $productAsked=getProduct($mysqlClient,$idArticles );
 //TODO: comprendre pourquoi on a un tableau de tableau ! modif requete getProduct() ?
 $productAsked=$productAsked[0];
 
-include '../ressources/views/product/show.tlp.php';
+include '../ressources/views/cart/index.php';

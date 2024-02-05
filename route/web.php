@@ -3,6 +3,7 @@ $routes = array(
     'home' => '../app/controllers/homeController.php',
     'product'=>'../app/controllers/productController.php',
     'cart' => "../app/controllers/cartController.php",
+    'panier'=>'../app/controllers/panierController.php',
     '404' => '404.php',
 );
 //version Geremy
