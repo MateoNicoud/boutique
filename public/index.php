@@ -14,6 +14,6 @@ include_once '../ressources/views/layouts/footer.tlp.php';
 $_SESSION['cart']=initCart(3);
 //$_SESSION('cart') =initcart($_SESSION(),3);
 var_dump($_SESSION['cart']);
-fakeCart($_SESSION['cart'],3,2,4);
-var_dump($_SESSION('cart'));
+$_SESSION['cart']=fakeCart($_SESSION['cart'],3,2,4);
+var_dump($_SESSION['cart']);
 

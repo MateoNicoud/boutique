@@ -28,7 +28,7 @@ function initCart($idArticleMax = 4){
 //    on sélectionne tous les produits par leur id et ont les set à quantité =0
 //    on compte le nombre total de produits
 //    pour chaque produit on set $_Session
-    $array[]=[];
+    $array=[];
     for($i = 1; $i <= $idArticleMax; $i++) {
         $array[$i]=0;
             }
@@ -39,8 +39,8 @@ function fakeCart(array $array,int $a, int $b, int $c){
 //on sélectionne les 3 premiers produits
 //on les met à quantité a,b,c
     $value_filled= [$a,$b,$c];
-    for($i = 0; $i < count ($array); $i++) {
-        $array=array_fill_keys($array[$i],$value_filled[$i]);
+    for($i=1;$i<=min(count($array),count($value_filled));$i++){
+        $array[$i]=$value_filled[($i-1)];
     }
     return $array;
 
