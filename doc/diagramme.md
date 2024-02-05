@@ -1,4 +1,3 @@
-
 ```mermaid
 flowchart TD
     products[<u>products</u>
@@ -37,4 +36,8 @@ tva_id]-->categories[<u>categories</u>
 tva[<u>tva</u>
 <b>id</b>
 tva]
+```
+```mermaid
+flowchart TD
+c-->d
 ```

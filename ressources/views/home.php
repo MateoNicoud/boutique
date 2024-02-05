@@ -1,6 +1,3 @@
-<h2>Menu</h2>
-<br>
-
 <?php
 for ($i = 0; $i < count($allProducts); $i++) {
     ?>

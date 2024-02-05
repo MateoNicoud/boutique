@@ -5,5 +5,6 @@ global $getId ;
 if(!isset($getId)&& !isset($getProduct)){
 include "../app/controllers/homeController.php";
 }
-if($getProduct=="cart"){include "../ressources/views/cart/index.php";}
+if($getProduct=="cart"){
+    include "../app/controllers/cartController.php";}
 if ($getProduct=="product"&&!empty($getId)){ include "../app/controllers/showController.php";}
