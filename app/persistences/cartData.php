@@ -1,22 +1,5 @@
 <?php
-function getAllProducts(PDO $mysqlClient, $numberArticles)
-{
 
-    $lastPosts = [];
-    $mySqlQuery = "SELECT * FROM products LIMIT $numberArticles;";
-    $lastPosts = $mysqlClient->prepare($mySqlQuery);
-    $lastPosts->execute();
-    $lastPosts = $lastPosts->fetchAll();
-    return $lastPosts;
-}
-
-function getProduct(PDO $mysqlClient, $idArticle)
-{
-    $mySqlQuery = "SELECT * FROM `products` WHERE id= :id;";
-    $stm = $mysqlClient->prepare($mySqlQuery);
-    $stm->execute(["id" => $idArticle]);
-    return $stm->fetchAll();
-}
 
 function countTotalProductInCatalog()
 {
@@ -31,7 +14,7 @@ function initCart($idArticleMax = 4)
 //    pour chaque produit on set $_Session
     $array = [];
     for ($i = 1; $i <= $idArticleMax; $i++) {
-        $array[$i] = 0;
+        $array[$i] = 1;
     }
     return $array;
 }

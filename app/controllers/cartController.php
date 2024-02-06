@@ -1,11 +1,20 @@
 <?php
-//echo 'le cartController se charge';
-////$id=$_GET['id'];
-$idArticles=filter_input(INPUT_GET,'id');
-include '../app/persistences/cartProductsData.php';
-$productAsked=array();
-$productAsked=getProduct($mysqlClient,$idArticles );
-//TODO: comprendre pourquoi on a un tableau de tableau ! modif requete getProduct() ?
-$productAsked=$productAsked[0];
+global $mysqlClient;
 
-include '../ressources/views/cart/index.php';
+require_once '../app/persistences/cartData.php';
+require_once '../app/persistences/productData.php';
+
+
+    $cart = [];
+    foreach ($_SESSION['cart'] as $id => $quantity) {
+        $product = getProduct($mysqlClient, $id);
+        $cart[]=[
+            'id' => $id,
+            'title' => $product['title'],
+            'quantity' => $quantity,
+            'priceTTC' => $product['priceTTC'],
+        ];
+    };
+//    $total = totalCart($panier);
+    include '../ressources/views/cart/index.php';
+//}

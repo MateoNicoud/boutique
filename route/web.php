@@ -4,6 +4,8 @@ $routes = array(
     'product'=>'../app/controllers/productController.php',
     'cart' => "../app/controllers/cartController.php",
     'panier'=>'../app/controllers/panierController.php',
+    'modifiePanier'=>"../app/controllers/modifyCartController.php",
+    'addCart'=>"../app/controllers/addCartController.php",
     '404' => '404.php',
 );
 //version Geremy

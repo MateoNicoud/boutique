@@ -1,11 +1,14 @@
 <?php
-//echo 'le cartController se charge';
-////$id=$_GET['id'];
-$idArticles=filter_input(INPUT_GET,'id');
-include '../app/persistences/cartProductsData.php';
-$productAsked=array();
-$productAsked=getProduct($mysqlClient,$idArticles );
-//TODO: comprendre pourquoi on a un tableau de tableau ! modif requete getProduct() ?
-$productAsked=$productAsked[0];
+global $mysqlClient;
 
-include '../ressources/views/product/show.tlp.php';
+$idArticles = filter_input(INPUT_GET, 'id');
+if (isset($idArticles)) {
+    include '../app/persistences/productData.php';
+
+    $productAsked = getProduct($mysqlClient, $idArticles);
+    include '../ressources/views/product/show.tlp.php';
+
+} else {
+    header("Location: index.php");
+    exit;
+}
