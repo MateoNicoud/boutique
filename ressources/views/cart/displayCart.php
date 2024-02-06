@@ -1,6 +1,12 @@
 <h2>Panier</h2>
 <?php if (!empty($_SESSION["cart"]["products_id"])) {
-    //var_dump($_SESSION["cart"]["products_id"]); ?>
+    //var_dump($_SESSION["cart"]["products_id"]);
+    /*print_r($article);
+    echo '<br>';
+    var_dump((int)$_SESSION["cart"]["amount"]);
+    echo '<br>';
+    var_dump($_SESSION);*/
+   ?>
     <table>
         <thead>
         <tr>
@@ -22,10 +28,10 @@
                 //$totalPrice += $_SESSION["cart"]["amount"][$i] * $article[$i][0]["priceTTC"];
                 ?>
                 <tr>
-                    <td><?= $article[$i][0]["title"]; ?></td>
-                    <td><?= $article[$i][0]["priceTTC"]; ?></td>
+                    <td><?= $article[$i]["title"]; ?></td>
+                    <td><?= $article[$i]["priceTTC"]; ?></td>
                     <td><?= $_SESSION["cart"]["amount"][$i]; ?></td>
-                    <td><?= $_SESSION["cart"]["amount"][$i] * $article[$i][0]["priceTTC"]; ?></td>
+                    <td><?= $_SESSION["cart"]["amount"][$i] * $article[$i]["priceTTC"]; ?></td>
                 </tr>
             <?php }
         }

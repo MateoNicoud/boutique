@@ -1,23 +1,26 @@
 <?php
 include "../app/persistences/cart.php";
 initCart();
+
 /*for ($i=1;$i<=count($_SESSION["cart"]["products_id"]);$i++){
     $article[$i]=bdCart($pdo,$i);
 }*/
+
+global $pdo;
 if (isset($_POST["getId"])) {
     $productSelected = $_POST["getId"];
     addProductCart($productSelected);
 }
-global $pdo;
-for ($i = 1; $i <= max($_SESSION["cart"]["products_id"]); $i++) {
-    if (isset($_SESSION["cart"]["products_id"][$i])) {
-        $article[$i] = bdCart($pdo, $i);
+if (!empty($_SESSION["cart"]["products_id"])) {
+    for ($i = 1; $i <= max($_SESSION["cart"]["products_id"]); $i++) {
+        if (isset($_SESSION["cart"]["products_id"][$i])) {
+            $article[$i] = bdCart($pdo, $i);
+        }
     }
-}
 
 $totalCart = totalCart($article);
 $amountArticleInCart = amountArticleInCart();
-
+}
 
 
 include"../ressources/views/layouts/header.php";

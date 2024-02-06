@@ -22,7 +22,8 @@ function bdCart($pdo,$idProduct){
         FROM products
         WHERE id = $idProduct"
     );
-    return $statement->fetchAll();
+    $bdcart=$statement->fetchAll();
+    return $bdcart[0];
 }
 function totalCart($article)
 {
@@ -32,7 +33,7 @@ function totalCart($article)
          $i <= max($_SESSION["cart"]["products_id"]);
          $i++) {
         if(isset($_SESSION["cart"]["amount"][$i])&&isset($article[$i])){
-            $totalPrice += $_SESSION["cart"]["amount"][$i] * $article[$i][0]["priceTTC"];
+            $totalPrice += $_SESSION["cart"]["amount"][$i] * $article[$i]["priceTTC"];
         }
 
         // $_SESSION["cart"]["price"]=getProduct($pdo,$post)[0]["priceTTC"]*$_SESSION["cart"]["amount"];
@@ -43,21 +44,24 @@ function amountArticleInCart(){
     $amount=0;
     for ($i=1;$i<max($_SESSION["cart"]["products_id"]);$i++){
         if(isset($_SESSION["cart"]["amount"][$i])) {
-            $amount += 1 * $_SESSION["cart"]["amount"][$i];
+            $amount +=  $_SESSION["cart"]["amount"][$i];
         }
     }
     return $amount;
 }
 
 function addProductCart($productSelected) : void {
-    //if($article[$productSelected][0]["stock"]>=$_SESSION["cart"]["amount"][$productSelected]){
+global $article;
+    //if(isset($article)&&(int)$article[$productSelected][0]["stock"]>=(int)$_SESSION["cart"]["amount"][$productSelected]){
         $_SESSION["cart"]["products_id"][$productSelected]=$productSelected;
         $_SESSION["cart"]["amount"][$productSelected] = $_POST["amount"];
 
-    //}
+    /*}else {echo "hors stock";
+    var_dump((int)$article[$productSelected][0]["stock"]);
+    var_dump((int)$_SESSION["cart"]["amount"][$productSelected]);}*/
 }
 
-function displayproduct() : void {
+/*function displayproduct() : void {
     global $pdo;
 
     for ($i = 1; $i <= max($_SESSION["cart"]["products_id"]); $i++) {
@@ -70,4 +74,4 @@ function displayproduct() : void {
     $amountArticleInCart = amountArticleInCart();
 
 
-}
+}*/

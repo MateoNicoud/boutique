@@ -6,7 +6,8 @@ function getProduct($pdo, $getId)
         FROM products
         WHERE products.id=$getId"
     );
-    return $statement->fetchAll();
+    $productInfo = $statement->fetchAll();
+    return $productInfo[0];
 }
 
 function getAllProducts($pdo)
@@ -15,5 +16,6 @@ function getAllProducts($pdo)
         "SELECT *
         FROM products"
     );
-    return $statement->fetchAll();
+    $productInfo = $statement->fetchAll();
+    return $productInfo;
 }
