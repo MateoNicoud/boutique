@@ -1,4 +1,4 @@
-<h2> Footer Boutique </h2>
+<h1> Footer Boutique </h1>
 
 </body>
 </html>

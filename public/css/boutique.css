@@ -1,0 +1,57 @@
+html {
+    font-family: Manjari;
+    color: rgb(30, 173, 89);
+}
+
+table {
+    border-collapse: collapse;
+    border: 2px solid rgb(140,140,140);
+    font-family: Manjari;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+}
+
+thead,
+tfoot {
+    background-color: rgb(213, 245, 227);
+}
+
+th,
+td {
+    border: 1px solid rgb(160 160 160);
+    padding: 8px 10px;
+}
+
+td:last-of-type {
+    text-align: center;
+}
+
+tbody > tr:nth-of-type(even) {
+    background-color: rgb(237 238 242);
+}
+
+tfoot th {
+    text-align: right;
+}
+
+tfoot td {
+    font-weight: bold;
+}
+
+
+nav  a{ /* tous les liens a à l'intérieur de la balise nav */
+    float: left; /* effet flottant */
+    text-decoration: none; /* pas d'héritage avec effet souligné */
+    color: #ffffff; /* couleur du texte */
+    background: rgb(30, 173, 89); /* couleur de fond */
+    height: 36px; /* hauteur */
+    line-height: 33px; /* interligne */
+    padding: 0 10px; /* marges intérieur */
+    font-family: Manjari; /* police d'écriture */
+    font-size: 20px; /* taille du texte */
+    transition: .5s; /* temps de transition lors du hover : une demi seconde */
+}
+nav  a:hover{ /* tous liens lors du survol dans la balise nav */
+    background: rgb(237 238 242); /* couleur de fond */
+}
+

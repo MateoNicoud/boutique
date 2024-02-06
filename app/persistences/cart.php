@@ -1,9 +1,32 @@
 <?php
-echo 'cart';
+//echo 'cart-';
 
-session_start();
+// Fonction lié aux produits dans le panier
+function initCart()
+{
+    if (!isset($_SESSION)) {
+        session_start();
+    }
+    if (!isset($_SESSION['cart'])) {
+        $_SESSION['cart'] = [];
+    }
+}
 
-require('../ressources/views/layouts/header.tpl.php');
+function fakeCart()
+{
+    $_SESSION['cart'] = [
+        1 => 3,
+        2 => 2,
+        3 => 4
+    ];
+}
 
-var_dump($_SESSION);
-require('../ressources/views/layouts/footer.tpl.php');
+
+//function totalCart($pdo, $id)
+//{
+//    $totalCartStmt = $pdo->query("SELECT id
+//FROM products
+//WHERE id=$id;");
+//    return $allProductsStmt->fetchAll(PDO::FETCH_ASSOC);
+//}
+
