@@ -16,27 +16,31 @@ function fakeCart(): void
         $_SESSION["cart"]["amount"][$i] = $i + 10;
     }
 }
-function bdCart($idProduct){
+function bdCart($pdo,$idProduct){
     $statement = $pdo->query(
         "SELECT id, title, priceTTC
         FROM products
-        WHERE id == $idProduct"
+        WHERE id = $idProduct"
     );
     return $statement->fetchAll();
 }
-function totalCart()
+function totalCart($article)
 {
     $totalPrice = 0;
-    for ($i = 0;
-         $i < count($_SESSION["cart"]["products_id"]);
+    for ($i = 1;
+         $i <= count($_SESSION["cart"]["products_id"]);
          $i++) {
-        $price = array(
-            $i => $i + 20
-        );
-        $totalPrice += $_SESSION["cart"]["amount"][$i] * $price[$i];
+        $totalPrice += $_SESSION["cart"]["amount"][$i] * $article[$i][0]["priceTTC"];
 
 
         // $_SESSION["cart"]["price"]=getProduct($pdo,$post)[0]["priceTTC"]*$_SESSION["cart"]["amount"];
     }
     return $totalPrice;
+}
+function amountArticleInCart(){
+    $amount=0;
+    for ($i=1;$i<=count($_SESSION["cart"]["products_id"]);$i++){
+        $amount += 1*$_SESSION["cart"]["amount"][$i];
+    }
+    return $amount;
 }

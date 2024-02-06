@@ -12,29 +12,24 @@
     </tr>
     </thead>
     <tbody>
-    <?php $totalPrice = 0;
-    for ($i = 0;
-         $i < count($_SESSION["cart"]["products_id"]);
+    <?php //$totalPrice = 0;
+    for ($i = 1;
+         $i <= count($_SESSION["cart"]["products_id"]);
          $i++) {
-        $price = array(
-            $i => $i + 20
-        );
-
-        $productName = array(
-            $i => "product " . $i
-        );
-        $totalPrice += $_SESSION["cart"]["amount"][$i] * $price[$i]
+        //$totalPrice += $_SESSION["cart"]["amount"][$i] * $article[$i][0]["priceTTC"];
         ?>
         <tr>
-            <td><?= $productName[$i]; ?></td>
-            <td><?= $price[$i]; ?></td>
+            <td><?= $article[$i][0]["title"]; ?></td>
+            <td><?= $article[$i][0]["priceTTC"]; ?></td>
             <td><?= $_SESSION["cart"]["amount"][$i]; ?></td>
-            <td><?= $_SESSION["cart"]["amount"][$i] * $price[$i]; ?></td>
+            <td><?= $_SESSION["cart"]["amount"][$i] * $article[$i][0]["priceTTC"]; ?></td>
         </tr>
     <?php }
     ?>
     </tbody>
 </table>
 <span>Prix total : <?=
-    $totalPrice;
+    $totalCart;
     ?>€</span>
+<br>
+<button>Valider le panier</button>

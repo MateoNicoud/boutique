@@ -1,9 +1,11 @@
 <?php
 include "../app/persistences/cart.php";
 initCart();
-$bdCart=bdCart(1);
-$bdCart=bdCart(2);
-$bdCart=bdCart(3);
+for ($i=1;$i<=count($_SESSION["cart"]["products_id"]);$i++){
+    $article[$i]=bdCart($pdo,$i);
+}
+$totalCart = totalCart($article);
+$amountArticleInCart = amountArticleInCart();
 /*if(isset($_POST["amount"])){
     $amount = filter_input(INPUT_POST, "amount",FILTER_SANITIZE_SPECIAL_CHARS);
 }
@@ -28,5 +30,6 @@ session_unset();
 <span>price : <?=$_SESSION["cart"]["price"][$i]?></span>
 <?php }?>
 */
+include"../ressources/views/layouts/header.php";
 include "../ressources/views/cart/displayCart.php";
-
+include"../ressources/views/layouts/footer.php";
