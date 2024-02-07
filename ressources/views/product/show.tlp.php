@@ -19,7 +19,7 @@
             <div>
                 <form class="d-flex flex-column p-5 justify-content-around mx-3  mt-5 " method="post"
                       action="/?action=addCart&id=<?=$productAsked['id']; ?>">
-                    <input class="btn btn-secondary" type="number"  value="<?=$_SESSION['cart'][(int)$productAsked['id']];?>" name="quantity">
+                    <input class="btn btn-secondary" type="number"  value="<?=isset($_SESSION['cart'][(int)$productAsked['id']]) ?? "0";?>" name="quantity">
                     <input class="btn btn-primary" type="submit" value="ajouter au panier"/>
                 </form>
             </div>

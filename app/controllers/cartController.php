@@ -17,5 +17,8 @@ foreach ($_SESSION['cart'] as $id => $quantity) {
 };
 $cart = cleanCart($cart);
 $total = totalCart($cart);
+$_SESSION['cart']=cleanSessionCart($_SESSION['cart']);
+var_dump($_SESSION);
+var_dump($cart);
 include '../ressources/views/cart/index.php';
 //}

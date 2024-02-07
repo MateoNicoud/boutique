@@ -45,13 +45,22 @@ function totalCart(array $panier)
 function cleanCart(array $cart)
 {
     foreach ($cart as $key => $value) {
-        if ($value['quantity'] == 0) {
+        if ((int)$value['quantity'] == 0) {
             unset($cart["$key"]);
         }
     }
     return $cart;
 }
 
+function cleanSessionCart(array $session_cart)
+{
+    foreach ($session_cart as  $key=>$value) {
+        if ((int)$value == 0) {
+            unset($session_cart["$key"]);
+        }
+    }
+    return $session_cart;
+}
 
 function test_input($data)
 {

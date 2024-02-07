@@ -78,5 +78,3 @@
         </div>
     </div>
 </section>
-<?php var_dump($cart);
-var_dump($total);
