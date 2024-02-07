@@ -7,23 +7,26 @@ include "../app/persistences/cart.php";
 }*/
 
 
-global $pdo;
+/*global $pdo;
 if (isset($_POST["getId"])) {
     $productSelected = $_POST["getId"];
     addProductCart($productSelected);
 }
 if (!empty($_SESSION["cart"]["products_id"])) {
-
     for ($i = 1; $i <= max($_SESSION["cart"]["products_id"]); $i++) {
         if (isset($_SESSION["cart"]["products_id"][$i])) {
-            $article[$i] = bdCart($pdo, $i);
+            $article[$i] = bdCart($pdo,$i);
+            if(isset($_POST["id".$i])){
+                $id=$_POST["id".$i];
+                //var_dump($_POST["id".$i]);
+                updateProductCart($id);
+            }
         }
     }
-
-    $totalCart = totalCart($article);
+ $totalCart = totalCart($article);
     $amountArticleInCart = amountArticleInCart();
 }
-
+*/
 
 $products = getProduct($pdo,$getId);
 global $products;

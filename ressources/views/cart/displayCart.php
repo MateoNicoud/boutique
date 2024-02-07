@@ -1,12 +1,13 @@
 <h2>Panier</h2>
 <?php if (!empty($_SESSION["cart"]["products_id"])) {
     //var_dump($_SESSION["cart"]["products_id"]);
-    /*print_r($article);
-    echo '<br>';
+    //print_r($article);
+    /*echo '<br>';
     var_dump((int)$_SESSION["cart"]["amount"]);
     echo '<br>';
     var_dump($_SESSION);*/
    ?>
+    <form method="post" action="http://boutique.local/index.php?action=cart">
     <table>
         <thead>
         <tr>
@@ -30,7 +31,8 @@
                 <tr>
                     <td><?= $article[$i]["title"]; ?></td>
                     <td><?= $article[$i]["priceTTC"]; ?></td>
-                    <td><?= $_SESSION["cart"]["amount"][$i]; ?></td>
+                    <td><input type="number" name="amount<?=$i?>" value="<?= (int)$_SESSION["cart"]["amount"][$i]; ?>" >
+                    <input type="hidden" name="id<?=$i?>" value="<?=$i?>"></td>
                     <td><?= $_SESSION["cart"]["amount"][$i] * $article[$i]["priceTTC"]; ?></td>
                 </tr>
             <?php }
@@ -45,6 +47,8 @@
 
     <br>
     <button>Valider le panier</button>
+    <button type="submit">Modifier le panier</button>
+    </form>
 <?php } else { ?>
     <span>Votre panier est vide</span>
 <?php } ?>

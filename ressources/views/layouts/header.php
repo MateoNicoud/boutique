@@ -10,6 +10,7 @@
 </head>
 <body>
 <?php
+global $amountArticleInCart;
 if (isset($totalCart )){echo $amountArticleInCart." Articles dans le panier pour un total de : ".$totalCart."€"; }
 /*totalCart($pdo,1) ;
 echo "Prix du panier : ".$_SESSION["cart"]["price"]."€";

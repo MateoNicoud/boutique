@@ -42,7 +42,7 @@ function totalCart($article)
 }
 function amountArticleInCart(){
     $amount=0;
-    for ($i=1;$i<max($_SESSION["cart"]["products_id"]);$i++){
+    for ($i=1;$i<=max($_SESSION["cart"]["products_id"]);$i++){
         if(isset($_SESSION["cart"]["amount"][$i])) {
             $amount +=  $_SESSION["cart"]["amount"][$i];
         }
@@ -60,6 +60,10 @@ global $article;
     var_dump((int)$article[$productSelected][0]["stock"]);
     var_dump((int)$_SESSION["cart"]["amount"][$productSelected]);}*/
 }
+function updateProductCart($id) : void{
+    $_SESSION["cart"]["amount"][$id] = $_POST["amount".$id];
+
+}
 
 /*function displayproduct() : void {
     global $pdo;
@@ -75,3 +79,29 @@ global $article;
 
 
 }*/
+
+global $pdo;
+if (isset($_POST["getId"])) {
+    $productSelected = $_POST["getId"];
+    addProductCart($productSelected);
+}
+if (!empty($_SESSION["cart"]["products_id"])) {
+    for ($i = 1; $i <= max($_SESSION["cart"]["products_id"]); $i++) {
+        if (isset($_SESSION["cart"]["products_id"][$i])) {
+            $article[$i] = bdCart($pdo, $i);
+            if (isset($_POST["id" . $i])) {
+                $id = $_POST["id" . $i];
+               // var_dump($_POST["id" . $i]);
+                updateProductCart($id);
+               /* if ($_SESSION["cart"]["amount"][$i] == 0){
+                    unset($_SESSION["cart"]["amount"][$i]);
+                    unset($article[$i]);
+                }*/
+            }
+        }
+    }
+
+    $totalCart = totalCart($article);
+    $amountArticleInCart = amountArticleInCart();
+
+}
