@@ -34,7 +34,7 @@ function fakeCart(array $array, int $a, int $b, int $c)
 function totalCart(array $panier)
 {
     $tot = 0;
-    for ($i = 0; $i < count($panier); $i++) {
+    for ($i = 0; $i < count($panier)+1; $i++) {
         if (isset($panier[$i]['quantity'])) {
             $tot = $tot + (($panier[$i]['quantity']) * ($panier[$i]['priceTTC']));
         }
@@ -43,14 +43,14 @@ function totalCart(array $panier)
 }
 
 function cleanCart(array $cart)
-{foreach ($cart as $key=>$value){
-    if($value['quantity']==0){
-        unset($cart["$key"]);
+{
+    foreach ($cart as $key => $value) {
+        if ($value['quantity'] == 0) {
+            unset($cart["$key"]);
+        }
     }
- }
-return $cart;
+    return $cart;
 }
-
 
 
 function test_input($data)
@@ -61,3 +61,10 @@ function test_input($data)
     return $data;
 }
 
+function updateProductCart(array $quantite,array $panier_array ){
+    foreach ($panier_array as $key => $value) {
+        if (array_key_exists($key, $quantite)) {
+            $panier_array[$key] = $quantite["$key"];
+        }
+    }
+}
