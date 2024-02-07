@@ -5,7 +5,7 @@
                 <div class="card card-registration card-registration-2" style="border-radius: 15px;">
                     <div class="card-body p-0">
                         <div class="row g-0">
-                            <div class="col-lg-8">
+                            <div class="col-lg-12">
                                 <div class="p-5">
                                     <div class="d-flex justify-content-between align-items-center mb-5">
                                         <h1 class="fw-bold mb-0 text-black">Shopping Cart</h1>
@@ -33,7 +33,8 @@
                                                         <i class="fas fa-minus"></i>
                                                     </button>
 
-                                                    <input id="form1" min="0" name="<?= $cartLigne['id'];?>"
+                                                    <input id="form<?= (int)$cartLigne['id']; ?>" min="0"
+                                                           name="<?= $cartLigne['id']; ?>"
                                                            value="<?= (int)$cartLigne['quantity']; ?>"
                                                            type="number"
                                                            class="form-control form-control-sm"/>
@@ -45,7 +46,12 @@
 
                                                 </div>
                                                 <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                                                    <button type="button" class="btn-close" aria-label="Close" onclick="this.parentNode.querySelector('input[type=number]').reset()" type="submit"></button>
+                                                    <button  class="btn-close" aria-label="Close" onclick="document.getElementById('form<?= (int)$cartLigne['id']; ?>').value=0"
+                                                            type="submit" formaction="/?action=modifiePanier"></button>
+                                                </div>
+                                                <div>
+                                                    <button type="submit" formaction=/?action=modifiePanier>Modifier le panier
+                                                    </button>
                                                 </div>
                                                 <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
                                                     <h6 class="mb-0">€ <?= $cartLigne['priceTTC']; ?></h6>
@@ -69,6 +75,7 @@
 
                                         <button type="submit">Modifier le panier
                                         </button>
+
                                     </form>
                                 </div>
 
@@ -80,4 +87,5 @@
             </div>
         </div>
     </div>
+
 </section>
