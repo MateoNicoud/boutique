@@ -76,4 +76,5 @@ function updateProductCart(array $quantite,array $panier_array ){
             $panier_array[$key] = $quantite["$key"];
         }
     }
+    return $panier_array;
 }
