@@ -1,5 +1,4 @@
 <?php
-//echo 'cart-';
 
 // Fonction lié aux produits dans le panier
 function initCart()
@@ -12,21 +11,30 @@ function initCart()
     }
 }
 
-function fakeCart()
+//function fakeCart()
+//{
+//    $_SESSION['cart'] = [
+//        1 => 3,
+//        2 => 2,
+//        3 => 4
+//    ];
+//}
+
+function addProductCart($quantity, $product)
 {
-    $_SESSION['cart'] = [
-        1 => 3,
-        2 => 2,
-        3 => 4
-    ];
+    $_SESSION['cart'][$product] = $quantity;
 }
 
 
-//function totalCart($pdo, $id)
-//{
-//    $totalCartStmt = $pdo->query("SELECT id
-//FROM products
-//WHERE id=$id;");
-//    return $allProductsStmt->fetchAll(PDO::FETCH_ASSOC);
-//}
+function subTotalCart(float $price, int $quantity)
+{
+    $subTotal = $price * $quantity;
+    return $subTotal;
+}
 
+function totalCart(float $subTotal)
+{
+foreach ($subTotal as $amount) {
+}
+return $amount;
+}

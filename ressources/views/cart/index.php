@@ -17,22 +17,30 @@ require('../ressources/views/layouts/header.tpl.php'); ?>
     </tr>
     </thead>
     <tbody>
-    <?php foreach ($cart as $cartLine) : ?>
+    <!--     Todo :  foreach de sous total et total, boucle foreach dans fonction-->
+    <?php foreach ($_SESSION['cart'] as $product => $quantity) : ?>
+        <?php var_dump(getProduct($pdo,$product)); ?>
         <tr>
-            <td><img src="../img/product/<?= $cartLine ['id'] ?>.jpg" width="50"
-                     height="50" >
+            <td><img src="../img/product/<?= getProduct($pdo, $product)['id'] ?>.jpg" width="50"
+                     height="50">
             </td>
-            <td><?= $cartLine ['title']?> </td>
-            <td> <?= $cartLine ['price']?> </td>
-            <td> <?= $cartLine ['quantity']?> </td>
-            <td><?= $cartLine ['amount']?> </td>
+            <td><?= getProduct($pdo, $product)  ['title']?> </td>
+            <td> <?= getProduct($pdo, $product)  ['priceTTC']?> </td>
+            <td> <?= $quantity ?> </td>
+            <td><?= subTotalCart(getProduct($pdo, $product)  ['priceTTC'], $quantity);?> </td>
+            <?php endforeach; ?>
         </tr>
-    <?php endforeach; ?>
+
     </tbody>
     <tfoot>
-    <th scope="row" colspan="4">Total</th>
+
+        <th scope="row" colspan="4"><?= $total = totalCart(subTotalCart()); ?></th>
+
     </tfoot>
 </table>
-
+<form action="/?action=pay" method="POST" onSubmit="alert('Etes-vous sûr(e)?')">
+    <input name="edit_cmd" type="submit" value="Modifier ma commande"/>
+    <input name="valid_cmd" type="submit" value="Valider ma commande"/>
+</form>
 
 <?php require('../ressources/views/layouts/footer.tpl.php'); ?>

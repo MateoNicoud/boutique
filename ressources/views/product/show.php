@@ -18,7 +18,7 @@ require('../ressources/views/layouts/header.tpl.php'); ?>
         <br>
         <!--Ajouter limite de quantité en fonction du stock -->
         <div>
-            <input type="number" id="product" name="product" min="0" max="50">
+            <input type="number" id="quantity" name="quantity" value="1" min="1" max="50">
         </div>
         <!--Afficher total -->
         <div class="button">
