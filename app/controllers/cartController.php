@@ -27,9 +27,9 @@ if (!empty($_SESSION["cart"]["products_id"])) {
 }
 */
 
-    include"../ressources/views/layouts/header.php";
+include "../ressources/views/layouts/header.php";
 include "../ressources/views/cart/displayCart.php";
-include"../ressources/views/layouts/footer.php";
+include "../ressources/views/layouts/footer.php";
 
 
 

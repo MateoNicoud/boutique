@@ -16,15 +16,18 @@ function fakeCart(): void
         $_SESSION["cart"]["amount"][$i] = $i + 10;
     }
 }
-function bdCart($pdo,$idProduct){
+
+function bdCart($pdo, $idProduct)
+{
     $statement = $pdo->query(
         "SELECT id, title, priceTTC, stock
         FROM products
         WHERE id = $idProduct"
     );
-    $bdcart=$statement->fetchAll();
+    $bdcart = $statement->fetchAll();
     return $bdcart[0];
 }
+
 function totalCart($article)
 {
     $totalPrice = 0;
@@ -32,7 +35,7 @@ function totalCart($article)
 
          $i <= max($_SESSION["cart"]["products_id"]);
          $i++) {
-        if(isset($_SESSION["cart"]["amount"][$i])&&isset($article[$i])){
+        if (isset($_SESSION["cart"]["amount"][$i]) && isset($article[$i])) {
             $totalPrice += $_SESSION["cart"]["amount"][$i] * $article[$i]["priceTTC"];
         }
 
@@ -40,21 +43,24 @@ function totalCart($article)
     }
     return $totalPrice;
 }
-function amountArticleInCart(){
-    $amount=0;
-    for ($i=1;$i<=max($_SESSION["cart"]["products_id"]);$i++){
-        if(isset($_SESSION["cart"]["amount"][$i])) {
-            $amount +=  $_SESSION["cart"]["amount"][$i];
+
+function amountArticleInCart()
+{
+    $amount = 0;
+    for ($i = 1; $i <= max($_SESSION["cart"]["products_id"]); $i++) {
+        if (isset($_SESSION["cart"]["amount"][$i])) {
+            $amount += $_SESSION["cart"]["amount"][$i];
         }
     }
     return $amount;
 }
 
-function addProductCart($productSelected) : void {
+function addProductCart($productSelected): void
+{
 
     //if(isset($article)&&(int)$article[$productSelected][0]["stock"]>=(int)$_SESSION["cart"]["amount"][$productSelected]){
-    if($_POST["amount"] > 0){
-        $_SESSION["cart"]["products_id"][$productSelected]=$productSelected;
+    if ($_POST["amount"] > 0) {
+        $_SESSION["cart"]["products_id"][$productSelected] = $productSelected;
         $_SESSION["cart"]["amount"][$productSelected] = $_POST["amount"];
     }
 
@@ -62,8 +68,10 @@ function addProductCart($productSelected) : void {
     var_dump((int)$article[$productSelected][0]["stock"]);
     var_dump((int)$_SESSION["cart"]["amount"][$productSelected]);}*/
 }
-function updateProductCart($id) : void{
-    $_SESSION["cart"]["amount"][$id] = $_POST["amount".$id];
+
+function updateProductCart($id): void
+{
+    $_SESSION["cart"]["amount"][$id] = $_POST["amount" . $id];
 
 }
 
@@ -93,15 +101,15 @@ if (!empty($_SESSION["cart"]["products_id"])) {
             $article[$i] = bdCart($pdo, $i);
             if (isset($_POST["id" . $i])) {
                 $id = $_POST["id" . $i];
-               // var_dump($_POST["id" . $i]);
+                // var_dump($_POST["id" . $i]);
                 updateProductCart($id);
-                if ($_SESSION["cart"]["amount"][$i] == 0){
+                if ($_SESSION["cart"]["amount"][$i] == 0 || isset($_POST["delete".$i])) {
                     unset($_SESSION["cart"]["products_id"][$i]);
                     unset($_SESSION["cart"]["amount"][$i]);
                     unset($article[$i]);
                     //var_dump($_SESSION["cart"]["products_id"]);
-                    if (empty($_SESSION["cart"]["products_id"])){
-                        break ;
+                    if (empty($_SESSION["cart"]["products_id"])) {
+                        break;
                     }
                 }
             }
@@ -109,7 +117,8 @@ if (!empty($_SESSION["cart"]["products_id"])) {
     }
     if (!empty($_SESSION["cart"]["products_id"])) {
 
-    $totalCart = totalCart($article);
-    $amountArticleInCart = amountArticleInCart();
+        $totalCart = totalCart($article);
+        $amountArticleInCart = amountArticleInCart();
 
-}}
+    }
+}

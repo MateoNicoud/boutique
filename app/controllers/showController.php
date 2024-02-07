@@ -28,8 +28,8 @@ if (!empty($_SESSION["cart"]["products_id"])) {
 }
 */
 
-$products = getProduct($pdo,$getId);
+$products = getProduct($pdo, $getId);
 global $products;
-include"../ressources/views/layouts/header.php";
+include "../ressources/views/layouts/header.php";
 include "../ressources/views/product/show.php";
-include"../ressources/views/layouts/footer.php";
+include "../ressources/views/layouts/footer.php";

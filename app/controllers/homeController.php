@@ -7,8 +7,6 @@ include "../app/persistences/cart.php";
 }*/
 
 
-
-
 $allProducts = getAllProducts($pdo);
 include "../ressources/views/layouts/header.php";
 include "../ressources/views/home.php";
