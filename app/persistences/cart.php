@@ -51,10 +51,12 @@ function amountArticleInCart(){
 }
 
 function addProductCart($productSelected) : void {
-global $article;
+
     //if(isset($article)&&(int)$article[$productSelected][0]["stock"]>=(int)$_SESSION["cart"]["amount"][$productSelected]){
+    if($_POST["amount"] > 0){
         $_SESSION["cart"]["products_id"][$productSelected]=$productSelected;
         $_SESSION["cart"]["amount"][$productSelected] = $_POST["amount"];
+    }
 
     /*}else {echo "hors stock";
     var_dump((int)$article[$productSelected][0]["stock"]);
@@ -93,15 +95,21 @@ if (!empty($_SESSION["cart"]["products_id"])) {
                 $id = $_POST["id" . $i];
                // var_dump($_POST["id" . $i]);
                 updateProductCart($id);
-               /* if ($_SESSION["cart"]["amount"][$i] == 0){
+                if ($_SESSION["cart"]["amount"][$i] == 0){
+                    unset($_SESSION["cart"]["products_id"][$i]);
                     unset($_SESSION["cart"]["amount"][$i]);
                     unset($article[$i]);
-                }*/
+                    //var_dump($_SESSION["cart"]["products_id"]);
+                    if (empty($_SESSION["cart"]["products_id"])){
+                        break ;
+                    }
+                }
             }
         }
     }
+    if (!empty($_SESSION["cart"]["products_id"])) {
 
     $totalCart = totalCart($article);
     $amountArticleInCart = amountArticleInCart();
 
-}
+}}
