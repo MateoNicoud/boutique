@@ -44,6 +44,9 @@
                                                     </button>
 
                                                 </div>
+                                                <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                                                    <button type="button" class="btn-close" aria-label="Close" onclick="this.parentNode.querySelector('input[type=number]').reset()" type="submit"></button>
+                                                </div>
                                                 <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
                                                     <h6 class="mb-0">€ <?= $cartLigne['priceTTC']; ?></h6>
                                                 </div>
