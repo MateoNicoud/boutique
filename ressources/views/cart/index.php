@@ -49,10 +49,6 @@
                                                     <button  class="btn-close" aria-label="Close" onclick="document.getElementById('form<?= (int)$cartLigne['id']; ?>').value=0"
                                                             type="submit" formaction="/?action=modifiePanier"></button>
                                                 </div>
-                                                <div>
-                                                    <button type="submit" formaction=/?action=modifiePanier>Modifier le panier
-                                                    </button>
-                                                </div>
                                                 <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
                                                     <h6 class="mb-0">€ <?= $cartLigne['priceTTC']; ?></h6>
                                                 </div>
@@ -73,7 +69,7 @@
                                             </h6>
                                         </div>
 
-                                        <button type="submit">Modifier le panier
+                                        <button type="button" class="btn btn-primary">Modifier le panier
                                         </button>
 
                                     </form>
