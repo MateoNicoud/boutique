@@ -35,17 +35,20 @@ function totalCart(array $panier)
 {
     $tot = 0;
     for ($i = 0; $i < count($panier); $i++) {
-        if (isset($panier[$i]['quantité'])) {
-            $tot = $tot + (($panier[$i]['quantité']) * ($panier[$i]['priceTTC']));
+        if (isset($panier[$i]['quantity'])) {
+            $tot = $tot + (($panier[$i]['quantity']) * ($panier[$i]['priceTTC']));
         }
     }
     return $tot;
 }
 
-function compositionPanier()
-{
-
-//    return $_SESSION('cart');
+function cleanCart(array $cart)
+{foreach ($cart as $key=>$value){
+    if($value['quantity']==0){
+        unset($cart["$key"]);
+    }
+ }
+return $cart;
 }
 
 

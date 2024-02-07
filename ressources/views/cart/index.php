@@ -12,7 +12,7 @@
                                         <h6 class="mb-0 text-muted">3 items</h6>
                                     </div>
                                     <hr class="my-4">
-                                    <form method="post" action="/?action=ModifiePanier">
+                                    <form method="post" action="/?action=modifiePanier">
                                         <?php foreach ($cart as $cartLigne): ?>
                                             <div class="row mb-4 d-flex justify-content-between align-items-center">
                                                 <div class="col-md-2 col-lg-2 col-xl-2">
@@ -33,7 +33,7 @@
                                                         <i class="fas fa-minus"></i>
                                                     </button>
 
-                                                    <input id="form1" min="0" name="quantity"
+                                                    <input id="form1" min="0" name="<?= $cartLigne['id'];?>"
                                                            value="<?= (int)$cartLigne['quantity']; ?>"
                                                            type="number"
                                                            class="form-control form-control-sm"/>
@@ -56,7 +56,7 @@
                                         <hr class="my-4">
                                         <div class="d-flex justify-content-between mb-5">
                                             <h5 class="text-uppercase">Total price</h5>
-                                            <h5>€ <?= $total = ''; ?> </h5>
+                                            <h5>€ <?= $total; ?> </h5>
                                         </div>
                                         <div class="pt-5">
                                             <h6 class="mb-0"><a href="index.php" class="text-body"><i

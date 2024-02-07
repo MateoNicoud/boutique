@@ -1,6 +1,6 @@
 <pre>
 <?php
-include '../app/persistences/cartData.php';
+include_once'../app/persistences/cartData.php';
 echo "le paniercontroller se charge";
 
 $keys = array_keys($_SESSION['cart']);
@@ -15,7 +15,7 @@ foreach ($keys as $value) {
 
 };
 $total = totalCart($panier);
-include '../ressources/views/cart/index.php';
+include_once '../ressources/views/cart/index.php';
 
 ?>
 </pre>
