@@ -1,21 +1,21 @@
 <?php
 // La fonction “getProduct” qui retourne un produit de la BDD
 //fonction pour tous les produits
-function getProduct($pdo)
+function getAllProducts($pdo)
 {
-    $recovered = $pdo ->query("SELECT id,title,description,priceTTC,weight,tva,stock,categories_id,tva_id,price_HTT
+    $recovered = $pdo->query("SELECT id,title,description,priceTTC,weight,tva,stock,categories_id,tva_id,price_HTT
     FROM products");
-
-    echo '<br>';
-    return $recovered ->fetchAll(PDO::FETCH_ASSOC);
+    return $recovered->fetchAll();
 }
 
 // fonction pour un seul produit
-function getProductByID($pdo,$Id)
+function getProduct($pdo, $Id)
 {
-    $recovered = $pdo ->query("SELECT id,title,description,priceTTC,weight,tva,stock,categories_id,tva_id,price_HTT
-    FROM products WHERE id =$Id");
-
-    echo '<br>';
-    return $recovered ->fetchAll(PDO::FETCH_ASSOC);
+    $productStmt = $pdo->prepare("SELECT id,title,description,priceTTC,weight,tva,stock,categories_id,tva_id,price_HTT
+  FROM products
+WHERE id = :id_product; ");
+    $productStmt->execute(['id_product' => $Id]);
+    return $productStmt->fetch(PDO::FETCH_ASSOC);
 }
+
+
